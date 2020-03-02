@@ -1,0 +1,22 @@
+//Wrappers
+@mixin trans {
+	@include transition;
+}
+@mixin xCenter {
+	@include horizontalCenter;
+}
+@mixin yCenter {
+	@include verticalCenter;
+}
+@mixin bgi {
+	@include background-image;
+}
+@mixin ar($a,$b) {
+	@include aspect-ratio($a,$b);
+}
+@function cols($expression:1/12) {
+	@return columns($expression);
+}
+@function c($color) {
+	@return color($color);
+}

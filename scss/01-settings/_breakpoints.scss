@@ -1,0 +1,13 @@
+//Breakpoints sizes
+$small: em(320);
+$smallmedium: em(568);
+$medium: em(768);
+$large: em(1024);
+$xlarge: em(1280);
+
+//Breakpoints
+$small-up: 'only screen and (min-width:#{$small})';
+$smallmedium-up: 'only screen and (min-width:#{$smallmedium})';
+$medium-up: 'only screen and (min-width:#{$medium})';
+$large-up: 'only screen and (min-width:#{$large})';
+$xlarge-up: 'only screen and (min-width:#{$xlarge})';

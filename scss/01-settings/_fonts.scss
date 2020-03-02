@@ -1,0 +1,36 @@
+// 100 - Thin
+// 200 - Extra Light (Ultra Light)
+// 300 - Light
+// 400 - Normal
+// 500 - Medium
+// 600 - Semi Bold (Demi Bold)
+// 700 - Bold
+// 800 - Extra Bold (Ultra Bold)
+// 900 - Black (Heavy)
+@charset "UTF-8";
+@font-face {
+	font-family: 'NotoIKEAlatin';	
+	src: url('../assets/fonts/NotoIKEALatin-Regular.ttf') format('truetype');
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'NotoIKEAlatin';
+	src: url('../assets/fonts/NotoIKEALatin-Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'NotoIKEAlatin';
+	src: url('../assets/fonts/NotoIKEALatin-Bold.ttf') format('truetype');
+	font-weight: 700;
+}
+@font-face {
+	font-family: 'NotoIKEAlatin';
+	src: url('../assets/fonts/NotoIKEALatin-BoldItalic.ttf') format('truetype');
+	font-weight: 700;
+	font-style: italic;
+}
+
+$fonts: (
+	'notoikea': "'NotoIKEAlatin','Noto Sans','Roboto','Open Sans','sans-serif'"
+);

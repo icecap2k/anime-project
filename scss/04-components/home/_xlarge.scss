@@ -1,0 +1,41 @@
+.c-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &--advise {
+        display: none;
+    }
+
+    .c-home__breadcrumb {
+        width: 100%;
+        justify-content: space-between;
+        padding-left: em(80);
+        margin-top: 1em;
+
+        .c-breadcrumb {
+            padding-left: 0;
+
+            &--steps {
+                justify-content: flex-start;
+                padding: 0;
+                width: em(700);
+
+                .c-button--breadcrumb.c-active:after {
+                    border-bottom: 2px solid c("very-light-pink");
+                }
+
+                .c-button--breadcrumb {
+                    &:last-child {
+                        &:after {
+                            content: '';
+                            width: em(350);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

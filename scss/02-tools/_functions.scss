@@ -1,0 +1,16 @@
+//Bootstrap-like column calculation
+@function columns($expression:1/12) {
+  @return ($expression) * 100%;
+}
+//PX a em.
+@function em($pixels, $context: $browser-context) {
+  @return ($pixels / $context) * 1em;
+}
+//Getter de array de colors. Ex: color: c("corporate");
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}

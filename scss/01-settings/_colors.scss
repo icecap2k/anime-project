@@ -1,0 +1,175 @@
+$colors: ("gray": #eaeaea, "blue": #26c0c4, "red": #d63649, "darkergray": #333, "primary": #26c0c4, "primary-light0.3": #b1e9e7, "primary16": rgba(38, 192, 196, 0.16), "lightestgray": #f7f7f7, "very-light-pink": #cccccc, "brownish-grey": #666666, "brown-grey": #999999, "gray0.2": #666, "gray0.5": #eaeaea, "gray0.4": #ccc, "gray0.3": #999999, "gray0.04": #eaeaea66, "black": #000000, "black0.04": rgba(0, 0, 0, 0.04), "black0.1": rgba(0, 0, 0, 0.1), "black-32": rgba(0, 0, 0, 0.32), "black0.4": rgba(0, 0, 0, 0.4), "black0.5": rgba(0, 0, 0, 0.5), "black0.54": rgba(0, 0, 0, 0.54), "black0.05": rgba(0, 0, 0, 0.05), "green-blue": #00bb8c, "squash": #f29c11, "squash.24": rgba(242, 156, 17, 0.24), "faded-red": #d63649, "reddish": rgba(214, 54, 73, 0.2), "reddish.24": rgba(214, 54, 73, 0.24), "dark-sky-blue": #3598db, "tealish": rgba(38, 192, 196, 0.2), "tealish.24": rgba(38, 192, 196, 0.24), "white": #ffffff, "white0.3": rgba(255, 255, 255, 0.3), "white0.64": #ffffffa3, "robin-s-egg-blue": #b1e9e7, "french-blue": #437baf, "teal-blue": #00a5ac, "muted-blue": #32679d, "taupe": #b4a182, "cerulean": #007fb9, "dark-sand": #9c8867, "dark-slate-blue": #243b66, "ice-blue": #dff6f6, "aqua-marine": #4ccbcd, "reddish-orange": #ff661b, "sun-yellow": #fedb31, "dark-white": #f9f9f9, "faded-red-darker": #7d1824, "accent-warning-16": rgba(242, 156, 17, 0.16));
+
+$accent-error: #d63649;
+$accent-error20: rgba(214, 54, 73, 0.2);
+$primary: #26c0c4;
+$primary20: rgba(38, 192, 196, 0.2);
+$primary16: rgba(38, 192, 196, 0.16);
+$ice-blue: #dff6f6;
+$black16: rgba(0, 0, 0, 0.16);
+$black005: rgba(0, 0, 0, 0.05);
+$black01: rgba(0, 0, 0, 0.1);
+$black004: rgba(0, 0, 0, 0.04);
+$gray02: #666666;
+$gray03: #999999;
+$gray04: #cccccc;
+$gray05: #eaeaea;
+$dark-white: #f9f9f9;
+$accent-warning16 : rgba(242, 156, 17, 0.16);
+$brownish-grey: #666666;
+
+:root {
+    --accent-color-error: #{$accent-error};
+    --accent-color-error20: #{$accent-error20};
+    --primary-color: #{$primary};
+    --primary20-color: #{$primary20};
+    --primary16-color: #{$primary16};
+    --ice-blue-color: #{$ice-blue};
+    --black16-color: #{$black16};
+    --black004-color: #{$black004};
+    --black005-color: #{$black005};
+    --black01-color: #{$black01};
+    --gray-02-color: #{$gray02};
+    --gray-03-color: #{$gray03};
+    --gray-04-color: #{$gray04};
+    --gray-05-color: #{$gray05};
+    --brownish-grey-color: #{$brownish-grey};
+    --white-color: white;
+    --black-color: black;
+    --dark-white-color: #{$dark-white};
+    --accent-color-warning16: #{$accent-warning16};
+
+
+     //colors (hexadecimal format)
+  --colors-black: #000000;
+  --colors-gray-20: #333333;
+  --colors-gray-40: #666666;
+  --colors-gray-60: #999999;
+  --colors-gray-80: #cccccc;
+  --colors-gray-92: #eaeaea;
+  --colors-gray-97: #f7f7f7;
+  --colors-gray-98: #f9f9f9;
+  --colors-white: #ffffff;
+
+  --colors-primary: #26c0c4;
+
+  --colors-primary-1: #00a5ac;
+  --colors-primary-2: #4ccbcd;
+  --colors-primary-3: #b1e9e7;
+
+  --colors-warning: #f29c11;
+  --colors-error: #d63649;
+
+  --colors-blue-egg: #afe8e6;
+  --colors-green-blue: #00bc8d;
+  --colors-dark-sky-blue: #3397db;
+  --colors-faded-red-darker: #7c1723;
+  --colors-ice-blue: #dff6f6;
+
+  //faded transparency (rgba format)
+  --colors-transparent: rgba(0, 0, 0, 0);
+  --colors-blackFade-04: rgba(0, 0, 0, 0.04);
+  --colors-blackFade-05: rgba(0, 0, 0, 0.05);
+  --colors-blackFade-10: rgba(0, 0, 0, 0.1);
+  --colors-blackFade-16: rgba(0, 0, 0, 0.16);
+  --colors-blackFade-20: rgba(0, 0, 0, 0.2);
+  --colors-blackFade-32: rgba(0, 0, 0, 0.32);
+  --colors-blackFade-40: rgba(0, 0, 0, 0.4);
+  --colors-blackFade-50: rgba(0, 0, 0, 0.5);
+  --colors-blackFade-54: rgba(0, 0, 0, 0.54);
+  --colors-grayFade-40: rgba(234, 234, 234, 0.4);
+  --colors-whiteFade-05: rgba(255, 255, 255, 0.05);
+  --colors-whiteFade-30: rgba(255, 255, 255, 0.3);
+  --colors-whiteFade-64: rgba(255, 255, 255, 0.64);
+
+  --colors-warningFade-16: rgba(242, 156, 17, 0.16);
+  --colors-warningFade-24: rgba(242, 156, 17, 0.24);
+
+  --colors-primaryFade-08: rgba(38, 192, 196, 0.08);
+  --colors-primaryFade-16: rgba(38, 192, 196, 0.16);
+  --colors-primaryFade-20: rgba(38, 192, 196, 0.2);
+  --colors-primaryFade-24: rgba(38, 192, 196, 0.24);
+
+  --colors-errorFade-16: rgba(214, 54, 73, 0.16);
+  --colors-errorFade-20: rgba(214, 54, 73, 0.2);
+  --colors-errorFade-24: rgba(214, 56, 74, 0.24);
+}
+
+
+
+/**
+ *
+ *  colors
+ *    format: hexadecimal ---> example: #000000
+ *    name: --colors-{color-name-id}-{saturation (optional)}  -> example: --colors-gray-20
+ *    So -> --colors-gray-80 = #cccccc
+ *
+ *
+ *  colors with transparency
+ *    format: rbga ---> example: rgba(0,0,0,0.5)
+ *    name: --colors-{color-name-id}-{transparency %} -> example: --colors-blackFade-32
+ *    So -> --colors-blackFade-32 = rgba(0,0,0,0.32)
+ *
+ *
+ *  You can change between color format in visual studio or chrome console
+ *  Example:
+ *    --colors-black = #000000 = hsl(0, 0%, 0%) = rgb(0, 0, 0)
+ *    --colors-blackFade-50 = #00000080 = rgba(0, 0, 0, 0.5) = hsla(0, 0%, 0%, 0.502)
+ *
+*/
+:root {
+    //colors (hexadecimal format)
+    --colors-black: #000000;
+    --colors-gray-20: #333333;
+    --colors-gray-40: #666666;
+    --colors-gray-60: #999999;
+    --colors-gray-80: #cccccc;
+    --colors-gray-92: #eaeaea;
+    --colors-gray-97: #f7f7f7;
+    --colors-gray-98: #f9f9f9;
+    --colors-white: #ffffff;
+  
+    --colors-primary: #26c0c4;
+  
+    --colors-primary-1: #00a5ac;
+    --colors-primary-2: #4ccbcd;
+    --colors-primary-3: #b1e9e7;
+  
+    --colors-warning: #f29c11;
+    --colors-error: #d63649;
+  
+    --colors-blue-egg: #afe8e6;
+    --colors-green-blue: #00bc8d;
+    --colors-dark-sky-blue: #3397db;
+    --colors-faded-red-darker: #7c1723;
+    --colors-ice-blue: #dff6f6;
+  
+    //faded transparency (rgba format)
+    --colors-transparent: rgba(0, 0, 0, 0);
+    --colors-blackFade-04: rgba(0, 0, 0, 0.04);
+    --colors-blackFade-05: rgba(0, 0, 0, 0.05);
+    --colors-blackFade-10: rgba(0, 0, 0, 0.1);
+    --colors-blackFade-16: rgba(0, 0, 0, 0.16);
+    --colors-blackFade-20: rgba(0, 0, 0, 0.2);
+    --colors-blackFade-32: rgba(0, 0, 0, 0.32);
+    --colors-blackFade-40: rgba(0, 0, 0, 0.4);
+    --colors-blackFade-50: rgba(0, 0, 0, 0.5);
+    --colors-blackFade-54: rgba(0, 0, 0, 0.54);
+    --colors-grayFade-40: rgba(234, 234, 234, 0.4);
+    --colors-whiteFade-05: rgba(255, 255, 255, 0.05);
+    --colors-whiteFade-30: rgba(255, 255, 255, 0.3);
+    --colors-whiteFade-64: rgba(255, 255, 255, 0.64);
+  
+    --colors-warningFade-16: rgba(242, 156, 17, 0.16);
+    --colors-warningFade-24: rgba(242, 156, 17, 0.24);
+  
+    --colors-primaryFade-08: rgba(38, 192, 196, 0.08);
+    --colors-primaryFade-16: rgba(38, 192, 196, 0.16);
+    --colors-primaryFade-20: rgba(38, 192, 196, 0.2);
+    --colors-primaryFade-24: rgba(38, 192, 196, 0.24);
+  
+    --colors-errorFade-16: rgba(214, 54, 73, 0.16);
+    --colors-errorFade-20: rgba(214, 54, 73, 0.2);
+    --colors-errorFade-24: rgba(214, 56, 74, 0.24);
+  }
+  

@@ -7,10 +7,8 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      // const res = await fetch('https://kitsu.io/api/edge/manga?limit=20')
-      const res = await fetch(
-        'https://kitsu.io/api/edge/trending/manga?limit=20'
-      )
+      const res = await fetch('https://kitsu.io/api/edge/manga?limit=20')
+      // const res = await fetch('https://kitsu.io/api/edge/trending/manga?limit=20')
       res
         .json()
         .then(data => setMangas(data))
@@ -26,9 +24,7 @@ function Home() {
         mangas.data.map(manga => {
           return (
             <div key={manga.id} className="manga">
-              <p>
-                {manga.attributes.titles.en || manga.attributes.titles.en_jp}
-              </p>
+              <p>{manga.attributes.titles.en || manga.attributes.titles.en_jp}</p>
               <img src={manga.attributes.posterImage.small} />
               {manga.attributes.synopsis && (
                 <p>

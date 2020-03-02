@@ -1,0 +1,9 @@
+.c-home {
+    display: none;
+
+    &--advise {
+        display: grid;
+        margin-block-start: em(80);
+        margin-block-end: em(80);
+    }
+}

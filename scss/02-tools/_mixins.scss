@@ -1,0 +1,98 @@
+@import '01-settings/breakpoints';
+//Mixins MediaQueries
+@mixin smallmedium {
+  @media #{$smallmedium-up} {
+    @content;
+  }
+}
+@mixin medium {
+  @media #{$medium-up} {
+    @content;
+  }
+}
+@mixin large {
+  @media #{$large-up} {
+    @content;
+  }
+}
+@mixin xlarge {
+  @media #{$xlarge-up} {
+    @content;
+  }
+}
+//Mixins de Fonts basadas en array $fonts. Ex: @include font('verdana','bold');
+@mixin font($fontkey, $type: 'regular') {
+  @if map-has-key($fonts, $fontkey) {
+    $font: map-get($fonts, $fontkey);
+
+    font-family: #{$font};
+
+    @if $type == heavy {
+      font-weight: 900;
+    } @else if $type == bold {
+      font-weight: 700;
+    } @else if $type == medium {
+      font-weight: 500;
+    } @else if $type == light {
+      font-weight: 300;
+    } @else {
+      font-weight: 400;
+    }
+  } @else {
+    @warn "Unknown `#{$key}` in $fonts.";
+  }
+}
+//Centrado vertical: solo cuando el elemento tiene un height definido
+@mixin verticalCenter {
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+//Centrado horizontal: solo cuando el elemento tiene un width definido
+@mixin horizontalCenter {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+//Centrado total
+@mixin fullCenter {
+  @include verticalCenter;
+  @include horizontalCenter;
+}
+//Generador de circulos
+@mixin circle($size) {
+  border-radius: 50%;
+  height: $size;
+  width: $size;
+  line-height: $size;
+}
+@mixin transition($s: '0.2s') {
+  transition: #{$s} ease all;
+}
+//Aspect-ratio
+@mixin aspect-ratio($a, $b) {
+  $c: ($b/($a/100)) * 1%;
+
+  &:after {
+    padding-top: $c;
+    display: block;
+    content: '';
+    position: static;
+  }
+}
+@mixin background-image {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@mixin invisible {
+  opacity: 0;
+  visibility: hidden;
+}
+@mixin visible {
+  opacity: 1;
+  visibility: visible;
+}
