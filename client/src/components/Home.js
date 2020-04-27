@@ -9,7 +9,7 @@ function Home() {
     async function fetchData() {
       // const res = await fetch('https://kitsu.io/api/edge/manga?limit=20')
       const res = await fetch(
-        'https://kitsu.io/api/edge/trending/manga?limit=20'
+        'https://kitsu.io/api/edge/manga?page[limit]=15&page[offset]=0'
       )
       res
         .json()
@@ -18,8 +18,21 @@ function Home() {
     }
 
     fetchData()
+    fetch('http://localhost:8000/test', {
+      // mode: 'no-cors',
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    }).then(response => {
+      if (response.ok) {
+        response.json().then(json => {
+          console.log(json)
+        })
+      }
+    })
   }, [])
-
+  console.log(mangas)
   return (
     <div className="home">
       {mangas.data &&

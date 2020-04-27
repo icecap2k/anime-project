@@ -8,15 +8,18 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+  devServer: {
+    inline: true,
+    port: 3000,
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-        },
+        use: ['babel-loader'],
       },
     ],
   },
