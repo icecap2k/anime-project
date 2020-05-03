@@ -18,23 +18,89 @@ function Home() {
     }
 
     fetchData()
-    fetch('http://localhost:8000/test', {
-      // mode: 'no-cors',
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-      },
-    }).then(response => {
+  }, [])
+
+  const loggin = () => {
+    fetch(
+      'http://localhost:8000/user/login?email=xavi@email.com&password=12345678',
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      }
+    ).then(response => {
       if (response.ok) {
-        response.json().then(json => {
-          console.log(json)
-        })
+        console.log('DENTOR')
       }
     })
-  }, [])
+  }
+
+  const register = () => {
+    const data = {
+      name: 'aaa',
+      email: 'aaa@email.com',
+      password: '12341234',
+    }
+    fetch('http://localhost:8000/user/register', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+      console.log(response)
+      if (response.ok) {
+        console.log(response)
+      }
+    })
+  }
+
+  const addSerie = () => {
+    const data = {
+      user: 1,
+      serie: 7,
+    }
+    fetch('http://localhost:8000/serie/add', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+      console.log(response)
+      if (response.ok) {
+        console.log(response)
+      }
+    })
+  }
+
+  const removeSerie = () => {
+    const data = {
+      user: 1,
+      serie: 7,
+    }
+    fetch('http://localhost:8000/serie/remove', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+      console.log(response)
+      if (response.ok) {
+        console.log(response)
+      }
+    })
+  }
+
   console.log(mangas)
   return (
     <div className="home">
+      <input type="button" onClick={removeSerie} />
       {mangas.data &&
         mangas.data.map(manga => {
           return (
