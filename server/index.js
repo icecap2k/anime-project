@@ -1,8 +1,11 @@
 const cors = require("cors");
 const express = require("express");
 const mysql = require("mysql");
+const bodyParser = require("body-parser");
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const pool = mysql.createPool({
   host: process.env.MYSQL_HOST_IP,
@@ -19,14 +22,37 @@ app.listen(process.env.REACT_APP_SERVER_PORT, () => {
   );
 });
 
-app.get("/test", (req, res) => {
-  pool.query(`select * from user`, (err, results) => {
-    if (err) {
-      console.log("error");
-      return res.send("error");
-    } else {
-      console.log(results);
-      return res.send(results);
+app.get("/login", (req, res) => {
+  const { email, password } = req.query;
+  pool.query(
+    `select * from user where email='${email}' AND password='${password}'`,
+    (err, results) => {
+      if (err) {
+        return res.send(false);
+      } else {
+        return res.send(results.length > 0);
+      }
     }
-  });
+  );
+});
+
+app.post("/register", (req, res) => {
+  const { name, email, password } = req.body;
+  pool.query(
+    `INSERT INTO user(name, email, password) VALUES ('${name}','${email}','${password}')`,
+    (err, results) => {
+      if (err) {
+        if (err.code === "ER_DUP_ENTRY")
+          return res.send({
+            request: false,
+            message: "This email is already in our database",
+          });
+      } else {
+        return res.send({
+          request: true,
+          message: "Thank you, you are already registered",
+        });
+      }
+    }
+  );
 });
