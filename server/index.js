@@ -4,10 +4,13 @@ const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
 const app = express();
+// Prevent CORS
 app.use(cors());
+// Use body parser to get body params from fetch request
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Use createPool to handle multiple connection and reuse the connection
 const pool = mysql.createPool({
   host: process.env.MYSQL_HOST_IP,
   user: process.env.MYSQL_USER,
@@ -15,6 +18,13 @@ const pool = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 });
 
+/**
+ * User loggin
+ * Method: GET
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 app.get("/user/login", (req, res) => {
   const { email, password } = req.query;
   pool.query(
@@ -29,6 +39,17 @@ app.get("/user/login", (req, res) => {
   );
 });
 
+/**
+ * Register User
+ * Params req.body:
+ * - name {String}
+ * - email {String}
+ * - pass {String}
+ * Method: POST
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 app.post("/user/register", (req, res) => {
   const { name, email, password } = req.body;
   pool.query(
@@ -51,13 +72,22 @@ app.post("/user/register", (req, res) => {
   );
 });
 
+/**
+ * Add serie by user
+ * Params req.body:
+ * - user {Number}
+ * - serie {Number}
+ * Method: POST
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 app.post("/serie/add", (req, res) => {
   const { user, serie } = req.body;
   pool.query(
     `INSERT INTO user_series(userId, serieId) VALUES (${user},${serie})`,
     (err, results) => {
       if (err) {
-        return res.send(err);
         if (err.code === "ER_DUP_ENTRY") {
           return res.send({
             request: false,
@@ -74,6 +104,16 @@ app.post("/serie/add", (req, res) => {
   );
 });
 
+/**
+ * Remove serie by user
+ * Params req.body:
+ * - user {Number}
+ * - serie {Number}
+ * Method: POST
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 app.post("/serie/remove", (req, res) => {
   const { user, serie } = req.body;
   pool.query(
@@ -98,6 +138,7 @@ app.post("/serie/remove", (req, res) => {
   );
 });
 
+// Binds and listens for connections on the specified host and port.
 app.listen(process.env.REACT_APP_SERVER_PORT, () => {
   console.log(
     `App server now listening on port ${process.env.REACT_APP_SERVER_PORT}`
