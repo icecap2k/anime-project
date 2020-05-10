@@ -20,20 +20,37 @@ const pool = mysql.createPool({
 
 /**
  * User loggin
- * Method: GET
+ * Method: POST
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  */
-app.get("/user/login", (req, res) => {
-  const { email, password } = req.query;
+app.post("/user/login", (req, res) => {
+  const { email, password } = req.body;
   pool.query(
-    `select * from user where email='${email}' AND password='${password}'`,
+    `SELECT user.id, user.name, user_series.serieId FROM user LEFT JOIN user_series ON user.id=user_series.userId WHERE email='${email}' AND password='${password}'`,
     (err, results) => {
+      console.log(results);
       if (err) {
         return res.send(false);
       } else {
-        return res.send(results.length > 0);
+        if (results.length > 0) {
+          const resData = results.reduce(
+            (result, item) => {
+              const { id, name, serieId } = item;
+              return {
+                id,
+                name,
+                series: [...result.series, serieId],
+              };
+            },
+            { id: -1, name: "", series: [] }
+          );
+
+          return res.send(resData);
+        } else {
+          return res.send(false);
+        }
       }
     }
   );
@@ -66,6 +83,8 @@ app.post("/user/register", (req, res) => {
         return res.send({
           request: true,
           message: "Thank you, you are already registered",
+          userId: results.insertId,
+          name,
         });
       }
     }

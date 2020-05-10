@@ -5,17 +5,18 @@ import Home from './components/Home'
 import Page from './components/Page'
 import Landing from './components/landing/index'
 import Header from './components/header/header'
+import { StateProvider } from './store.js'
 
 const App = () => {
   return (
-    <div>
+    <StateProvider>
       <Header />
       <Router>
         <Landing path="/" />
         <Page path="page/:name" />
         <Home path="home" />
       </Router>
-    </div>
+    </StateProvider>
   )
 }
 
