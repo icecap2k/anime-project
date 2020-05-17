@@ -83,7 +83,7 @@ app.post("/user/register", (req, res) => {
         return res.send({
           request: true,
           message: "Thank you, you are already registered",
-          userId: results.insertId,
+          id: results.insertId,
           name,
         });
       }
@@ -102,9 +102,9 @@ app.post("/user/register", (req, res) => {
  * @param {Object} res - Express response object
  */
 app.post("/serie/add", (req, res) => {
-  const { user, serie } = req.body;
+  const { userId, serieId } = req.body;
   pool.query(
-    `INSERT INTO user_series(userId, serieId) VALUES (${user},${serie})`,
+    `INSERT INTO user_series(userId, serieId) VALUES (${userId},${serieId})`,
     (err, results) => {
       if (err) {
         if (err.code === "ER_DUP_ENTRY") {
@@ -134,9 +134,9 @@ app.post("/serie/add", (req, res) => {
  * @param {Object} res - Express response object
  */
 app.post("/serie/remove", (req, res) => {
-  const { user, serie } = req.body;
+  const { userId, serieId } = req.body;
   pool.query(
-    `DELETE FROM user_series WHERE userId='${user}' AND serieId='${serie}'`,
+    `DELETE FROM user_series WHERE userId='${userId}' AND serieId='${serieId}'`,
     (err, results) => {
       if (err) {
         return res.send(err);

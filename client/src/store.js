@@ -14,24 +14,34 @@ const StateProvider = ({ children }) => {
     switch (action.type) {
       case 'login':
         return {
-          ...initialState,
+          ...state,
           login: true,
-          userId: action.userId,
+          userId: action.id,
           name: action.name,
           series: action.series,
         }
       case 'register':
         return {
-          ...initialState,
+          ...state,
           login: true,
-          userId: action.userId,
+          userId: action.id,
           name: action.name,
+        }
+      case 'add':
+        return {
+          ...state,
+          series: [...state.series, action.id],
+        }
+      case 'remove':
+        return {
+          ...state,
+          series: state.series.filter(serie => serie != action.id),
         }
       default:
         throw new Error()
     }
   }, initialState)
-
+  console.log('STORE', state)
   return <Provider value={{ state, dispatch }}>{children}</Provider>
 }
 

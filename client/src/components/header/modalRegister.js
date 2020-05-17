@@ -64,7 +64,7 @@ function ModalRegister({ registerUser, onClose }) {
         />
         {error && <p>All fields are required</p>}
         {errorEmail && <p>Please insert a correct email address</p>}
-        <button onClick={handleOnRegister}>SIGN IN</button>
+        <button onClick={handleOnRegister}>REGISTRY</button>
       </ModalContainer>
       <LayerOpacity onClick={onClose} />
     </>
