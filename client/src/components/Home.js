@@ -1,36 +1,45 @@
 import React, { useState, useEffect } from 'react'
-import SerieItem from './serie/serieItem'
+import SerieList from './serie/serieList'
+import { getKitsuData } from '../services'
 
 function Home() {
   const [hasError, setErrors] = useState(false)
   const [mangas, setMangas] = useState({})
+  const [trendingAnime, setTrendingAnime] = useState({})
+  const [anime, setAnime] = useState({})
 
   useEffect(() => {
-    async function fetchData() {
-      // const res = await fetch('https://kitsu.io/api/edge/manga?limit=20')
+    async function getTrendingAnime() {
       const res = await fetch(
-        'https://kitsu.io/api/edge/manga?page[limit]=15&page[offset]=0'
+        'https://kitsu.io/api/edge/trending/anime?limit=5'
       )
       res
         .json()
-        .then(data => setMangas(data))
+        .then(response => setTrendingAnime(response))
         .catch(err => setErrors(err))
     }
-
-    fetchData()
+    getTrendingAnime()
+    async function getAnime() {
+      const res = await fetch('https://kitsu.io/api/edge/anime?limit=5')
+      res
+        .json()
+        .then(response => setAnime(response))
+        .catch(err => setErrors(err))
+    }
+    getAnime()
   }, [])
-
-  console.log(mangas)
   return (
-    <div className="home">
-      {mangas.data &&
-        mangas.data.map(manga => (
-          <SerieItem
-            key={manga.id}
-            id={manga.id}
-            attributes={manga.attributes}
-          />
-        ))}
+    <div>
+      {trendingAnime.data && (
+        <SerieList
+          list={trendingAnime.data}
+          title="Trending Anime Series"
+          type="anime"
+        />
+      )}
+      {anime.data && (
+        <SerieList list={anime.data} title="Anime Series" type="anime" />
+      )}
     </div>
   )
 }

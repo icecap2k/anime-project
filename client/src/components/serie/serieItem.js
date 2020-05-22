@@ -1,8 +1,12 @@
 import React, { useContext } from 'react'
+import { Link, navigate } from '@reach/router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { store } from '../../store.js'
 import { addSerie, removeSerie } from '../../services.js'
+import { ItemCard, ButtonAdd, ButtonRemove, ButtonInfo } from './styles'
+import { faTrashAlt, faPlus, faInfo } from '@fortawesome/free-solid-svg-icons'
 
-function SerieItem({ id, attributes }) {
+function SerieItem({ id, attributes, type }) {
   const globalState = useContext(store)
   const { userId, series } = globalState.state
 
@@ -19,23 +23,31 @@ function SerieItem({ id, attributes }) {
     }
   }
 
+  const handleViewSerie = () => {
+    navigate('/serie', { state: { id, type } })
+  }
+
   const addOrRemoveButton = series.find(serieId => serieId == id) ? (
-    <button onClick={handleRemoveSerie}>REMOVE</button>
+    <ButtonRemove onClick={handleRemoveSerie}>
+      REMOVE
+      <FontAwesomeIcon icon={faTrashAlt} />
+    </ButtonRemove>
   ) : (
-    <button onClick={handleAddSerie}>ADD</button>
+    <ButtonAdd onClick={handleAddSerie}>
+      ADD
+      <FontAwesomeIcon icon={faPlus} />
+    </ButtonAdd>
   )
 
   return (
-    <div className="manga">
-      <p>{attributes.titles.en || attributes.titles.en_jp}</p>
-      <img src={attributes.posterImage.small} />
-      {attributes.synopsis && (
-        <p>
-          <small>{attributes.synopsis}</small>
-        </p>
-      )}
+    <ItemCard>
+      <img src={attributes.posterImage.small} onClick={handleViewSerie} />
       {addOrRemoveButton}
-    </div>
+      <ButtonInfo onClick={handleViewSerie}>
+        MORE INFO
+        <FontAwesomeIcon icon={faInfo} />
+      </ButtonInfo>
+    </ItemCard>
   )
 }
 
