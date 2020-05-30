@@ -8,9 +8,9 @@ export const HeaderContainer = styled.header`
   grid-template-columns: auto 1170px auto;
   nav {
     grid-area: header-content;
-    display: grid;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    grid-template-columns: 25% 10% auto;
     h1 {
       font-family: 'Righteous';
       color: #eae7dc;

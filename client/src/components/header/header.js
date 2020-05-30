@@ -6,6 +6,7 @@ import { login, register } from '../../services.js'
 import ModalSignIn from './modalSignIn'
 import ModalRegister from './modalRegister'
 import ModalRegisterMessage from './modalRegisterMessage'
+import Search from '../search'
 
 function Header() {
   const globalState = useContext(store)
@@ -56,15 +57,15 @@ function Header() {
         {username && (
           <nav>
             <h1>Toshokan</h1>
-            <Link to="/news">NEWS</Link>
+            <Link to="/home">HOME</Link>
             <Link to="/library">LIBRARY</Link>
             <Link to="/profile">WELLCOME {username}</Link>
+            <Search />
           </nav>
         )}
         {!username && (
           <nav>
             <h1>Toshokan</h1>
-            <Link to="/news">NEWS</Link>
             <div>
               <button onClick={ToggleRegisterModal}>REGISTER</button>
               <button onClick={ToggleSignInModal}>SIGN IN</button>
