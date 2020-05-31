@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Redirect } from '@reach/router'
-import Home from './components/Home'
-import Page from './components/Page'
+import Home from './components/home'
+import Category from './components/category'
 import Landing from './components/landing'
 import Library from './components/library'
 import Header from './components/header/header'
@@ -20,6 +20,8 @@ const PrivateRoute = props => {
         return <SerieInfo path={path} location={location} />
       case 'library':
         return <Library path={path} />
+      case 'category':
+        return <Category path={path} location={location} />
       default:
         return <Landing path={path} />
     }
@@ -34,10 +36,10 @@ const App = () => {
       <Header />
       <Router>
         <Landing path="/" />
-        <Page path="page/:name" />
         <PrivateRoute path="home" component="home" />
         <PrivateRoute path="serie" component="serie" />
         <PrivateRoute path="library" component="library" />
+        <PrivateRoute path="category" component="category" />
       </Router>
     </StateProvider>
   )

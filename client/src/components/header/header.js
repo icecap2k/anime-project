@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link, navigate } from '@reach/router'
-import { HeaderContainer } from './styles'
+import { HeaderContainer, HeaderGoBack } from './styles'
 import { store } from '../../store.js'
 import { login, register } from '../../services.js'
 import ModalSignIn from './modalSignIn'
 import ModalRegister from './modalRegister'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import ModalRegisterMessage from './modalRegisterMessage'
 import Search from '../search'
 
@@ -51,6 +53,8 @@ function Header() {
   const ToggleRegisterModal = () => setShowRegisterModal(!showRegisterModal)
   const ToggleRegisterMessage = () =>
     setShowRegisterMessage(!showRegisterMessage)
+
+  const handleGoBack = () => navigate(-1)
   return (
     <>
       <HeaderContainer>
@@ -73,6 +77,11 @@ function Header() {
           </nav>
         )}
       </HeaderContainer>
+      <HeaderGoBack>
+        <button onClick={handleGoBack}>
+          <FontAwesomeIcon icon={faArrowLeft} /> Go back
+        </button>
+      </HeaderGoBack>
       {showSignInModal && (
         <ModalSignIn
           signIn={signIn}

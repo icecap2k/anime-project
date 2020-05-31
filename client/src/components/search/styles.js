@@ -15,6 +15,7 @@ export const SearchDropList = styled.ul`
   border: 1px solid #ccc;
   border-radius: 6px;
   margin-top: 5px;
+  z-index: 6;
 `
 
 export const SearchSectionHeader = styled.li`

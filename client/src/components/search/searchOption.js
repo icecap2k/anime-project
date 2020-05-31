@@ -6,7 +6,7 @@ function SearchOption({ serie, resetSearch }) {
   const handleViewSerie = () => {
     resetSearch()
     const { id, type } = serie
-    navigate('/serie', { state: { id, type } })
+    navigate(`/serie`, { state: { id, type } })
   }
   return (
     <SearchItem onClick={handleViewSerie}>

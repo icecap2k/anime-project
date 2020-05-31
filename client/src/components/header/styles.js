@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   height: 80px;
-  background-color: #d8c3a5;
+  background-color: #fff;
   display: grid;
   grid-template-areas: '. header-content .';
   grid-template-columns: auto 1170px auto;
@@ -10,15 +10,16 @@ export const HeaderContainer = styled.header`
     grid-area: header-content;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
+    padding-block-start: 10px;
     h1 {
       font-family: 'Righteous';
-      color: #eae7dc;
+      color: #333;
       font-size: 48px;
       font-weight: 100;
     }
     a {
-      color: #eae7dc;
+      color: #333;
       font-family: 'Raleway', sans-serif;
       font-size: 24px;
       font-weight: 500;
@@ -114,4 +115,27 @@ export const LayerOpacity = styled.div`
   z-index: 2;
   top: 0;
   left: 0;
+`
+
+export const HeaderGoBack = styled.div`
+  max-width: 1170px;
+  margin: auto;
+  position: relative;
+
+  button {
+    padding: 5px 10px;
+    border: none;
+    border-bottom: 2px solid #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    font-family: 'Raleway', sans-serif;
+    z-index: 10;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+
+    svg {
+      margin-inline-end: 5px;
+    }
+  }
 `

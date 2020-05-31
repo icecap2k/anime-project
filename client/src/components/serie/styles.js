@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const SerieListContainer = styled.div`
   padding: 20px 0;
-  max-width: 1140px;
+  max-width: 1170px;
   margin: auto;
   display: grid;
   row-gap: 20px;
@@ -88,7 +88,7 @@ export const SerieInfoContainer = styled.article`
     position: relative;
     z-index: 2;
     top: 360px;
-    max-width: 1140px;
+    max-width: 1170px;
     margin: auto;
     display: grid;
     grid-template-columns: 2fr auto;
@@ -106,9 +106,13 @@ export const SerieLateralInfo = styled.div`
   display: grid;
   grid-template-rows: auto 50px;
   row-gap: 20px;
+  align-content: baseline;
   img {
     border: 5px solid #fafafa;
     outline: 2px solid #e85a4f;
+  }
+  button {
+    align-self: center;
   }
 `
 
@@ -119,7 +123,14 @@ export const SerieBanner = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(${props => props.image});
-  position: fixed;
+  position: absolute;
   z-index: 1;
   border-bottom: 1px solid #e85a4f;
+`
+export const SerieVideo = styled.div`
+  display: grid;
+  justify-items: center;
+  margin: 50px 0;
+  border-block-start: 1px solid #000;
+  border-block-end: 1px solid #000;
 `

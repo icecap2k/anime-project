@@ -11,8 +11,8 @@ function Search() {
   useEffect(() => {
     async function searchSeries(type) {
       return getKitsuData(
-        `https://kitsu.io/api/edge/${type}?filter[text]=${value}&page[limit]=`,
-        5
+        `https://kitsu.io/api/edge/${type}?filter[text]=${value}&page[limit]=5`,
+        {}
       )
     }
     if (value.length > 1) {
@@ -36,22 +36,21 @@ function Search() {
         onChange={handleChangeInput}
         placeholder="Search title"
       />
-      <SearchDropList>
-        {animeResults.length > 0 && (
+      {animeResults.length > 0 && mangaResults.length > 0 && (
+        <SearchDropList>
           <SearchSection
             list={animeResults}
             title="Anime"
             resetSearch={resetSearch}
           />
-        )}
-        {mangaResults.length > 0 && (
+
           <SearchSection
             list={mangaResults}
             title="Manga"
             resetSearch={resetSearch}
           />
-        )}
-      </SearchDropList>
+        </SearchDropList>
+      )}
     </div>
   )
 }

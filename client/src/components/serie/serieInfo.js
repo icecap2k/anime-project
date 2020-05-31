@@ -7,8 +7,10 @@ import {
   ButtonAdd,
   ButtonRemove,
   SerieLateralInfo,
+  SerieVideo,
 } from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ReactPlayer from 'react-player'
 import { faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 function SerieInfo({ location }) {
@@ -24,7 +26,7 @@ function SerieInfo({ location }) {
         .catch(err => setErrors(err))
     }
     getTrendingAnime()
-  }, [])
+  }, [location.state])
   console.log(anime.data)
 
   const { userId, series } = globalState.state
@@ -58,7 +60,13 @@ function SerieInfo({ location }) {
     <SerieInfoContainer>
       {anime.data && (
         <>
-          <SerieBanner image={anime.data.attributes.coverImage.original} />
+          {anime.data.attributes.coverImage ? (
+            <SerieBanner image={anime.data.attributes.coverImage.original} />
+          ) : (
+            anime.data.attributes.posterImage && (
+              <SerieBanner image={anime.data.attributes.posterImage.large} />
+            )
+          )}
           <section>
             <SerieLateralInfo>
               <img src={anime.data.attributes.posterImage.small} />
@@ -71,6 +79,13 @@ function SerieInfo({ location }) {
               </h2>
               {anime.data.attributes.synopsis && (
                 <p>{anime.data.attributes.synopsis}</p>
+              )}
+              {anime.data.attributes.youtubeVideoId && (
+                <SerieVideo>
+                  <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${anime.data.attributes.youtubeVideoId}`}
+                  />
+                </SerieVideo>
               )}
             </div>
           </section>
