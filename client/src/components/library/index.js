@@ -6,7 +6,6 @@ function Library() {
   const [animeList, setAnimelist] = useState({})
   const globalState = useContext(store)
   useEffect(() => {
-    console.log(globalState.state.series)
     async function getSeriesInfo() {
       const userSeries = Promise.all(
         globalState.state.series.map(

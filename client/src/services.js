@@ -66,6 +66,6 @@ export const removeSerie = async (userId, serieId) => {
 /**
  * Kitsu api services
  */
-export const getKitsuData = async url => {
-  return await fetch(url).then(response => response.json())
+export const getKitsuData = async (url, limit) => {
+  return await fetch(url + limit).then(response => response.json())
 }

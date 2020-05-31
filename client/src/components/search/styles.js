@@ -37,6 +37,7 @@ export const SearchItem = styled.li`
   background-color: #fff;
   column-gap: 10px;
   padding: 5px;
+  cursor: pointer;
 
   span {
     font-size: 16px;

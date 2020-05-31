@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import SearchOption from './searchOption'
-import { SearchDropList, SearchInput, SearchSectionHeader } from './styles'
+import SearchSection from './searchSection'
+import { getKitsuData } from '../../services'
+import { SearchDropList, SearchInput } from './styles'
 
 function Search() {
   const [value, setValue] = useState('')
@@ -8,21 +9,15 @@ function Search() {
   const [mangaResults, setMangaResults] = useState({})
 
   useEffect(() => {
-    async function searchAnimeSeries() {
-      const res = await fetch(
-        `https://kitsu.io/api/edge/anime?filter[text]=${value}&page[limit]=5`
+    async function searchSeries(type) {
+      return getKitsuData(
+        `https://kitsu.io/api/edge/${type}?filter[text]=${value}&page[limit]=`,
+        5
       )
-      res.json().then(response => setAnimeResults(response.data))
-    }
-    async function searchMangaSeries() {
-      const res = await fetch(
-        `https://kitsu.io/api/edge/manga?filter[text]=${value}&page[limit]=5`
-      )
-      res.json().then(response => setMangaResults(response.data))
     }
     if (value.length > 1) {
-      searchAnimeSeries()
-      searchMangaSeries()
+      searchSeries('anime').then(response => setAnimeResults(response.data))
+      searchSeries('manga').then(response => setMangaResults(response.data))
     } else {
       setAnimeResults({})
       setMangaResults({})
@@ -43,27 +38,19 @@ function Search() {
       />
       <SearchDropList>
         {animeResults.length > 0 && (
-          <SearchSectionHeader>Anime</SearchSectionHeader>
+          <SearchSection
+            list={animeResults}
+            title="Anime"
+            resetSearch={resetSearch}
+          />
         )}
-        {animeResults.length > 0 &&
-          animeResults.map(serie => (
-            <SearchOption
-              key={serie.id}
-              serie={serie}
-              resetSearch={resetSearch}
-            />
-          ))}
         {mangaResults.length > 0 && (
-          <SearchSectionHeader>Manga</SearchSectionHeader>
+          <SearchSection
+            list={mangaResults}
+            title="Manga"
+            resetSearch={resetSearch}
+          />
         )}
-        {mangaResults.length > 0 &&
-          mangaResults.map(serie => (
-            <SearchOption
-              key={serie.id}
-              serie={serie}
-              resetSearch={resetSearch}
-            />
-          ))}
       </SearchDropList>
     </div>
   )
