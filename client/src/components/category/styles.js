@@ -12,3 +12,12 @@ export const CategoryInfo = styled.main`
     font-size: 26px;
   }
 `
+export const CategoryTotalSeries = styled.p`
+  text-align: right;
+  font-size: 14px;
+  span {
+    color: #82c242;
+    font-size: 16px;
+    font-weight: 700;
+  }
+`

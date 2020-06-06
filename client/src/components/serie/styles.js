@@ -20,7 +20,7 @@ export const SerieListContainer = styled.div`
 export const SerieRow = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 20px;
+  grid-gap: 20px;
 `
 
 export const ItemCard = styled.section`

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import SerieList from '../serie/serieList'
 import { getKitsuData } from '../../services'
 import { trendingCategory, categoryFilter } from '../commons/settings'
-import { CategoryInfo } from './styles'
+import { CategoryInfo, CategoryTotalSeries } from './styles'
 
 function Category({ location }) {
   const { category } = location.state
@@ -28,7 +28,14 @@ function Category({ location }) {
     <CategoryInfo>
       <h2>Category: {category.attributes.title}</h2>
       <p>{category.attributes.description}</p>
-      <div>{category.attributes.totalMediaCount}</div>
+      <CategoryTotalSeries>
+        Total series in this category:{' '}
+        <span>
+          {new Intl.NumberFormat('de-DE').format(
+            category.attributes.totalMediaCount
+          )}
+        </span>
+      </CategoryTotalSeries>
       {trendingAnime.data && (
         <SerieList
           list={trendingAnime.data}

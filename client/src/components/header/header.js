@@ -77,11 +77,13 @@ function Header() {
           </nav>
         )}
       </HeaderContainer>
-      <HeaderGoBack>
-        <button onClick={handleGoBack}>
-          <FontAwesomeIcon icon={faArrowLeft} /> Go back
-        </button>
-      </HeaderGoBack>
+      {username && (
+        <HeaderGoBack>
+          <button onClick={handleGoBack}>
+            <FontAwesomeIcon icon={faArrowLeft} /> Go back
+          </button>
+        </HeaderGoBack>
+      )}
       {showSignInModal && (
         <ModalSignIn
           signIn={signIn}
