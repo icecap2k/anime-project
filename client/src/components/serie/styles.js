@@ -14,6 +14,9 @@ export const SerieListContainer = styled.div`
   }
   a {
     text-align: right;
+    font-size: 18px;
+    color: #e85a4f;
+    font-family: 'Raleway', sans-serif;
   }
 `
 
